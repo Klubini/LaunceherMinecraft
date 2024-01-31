@@ -128,8 +128,12 @@ namespace Launceher
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //path();
-            if (File.Exists(@".\nick.pseasons"))
+            string path = @".\nick.pseasons";
+            if (File.Exists(path))
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Open))
+                {
+                    using (StreamReader streamReader = new StreamReader(fs))
             {
                 Login.Text = File.ReadAllText(@".\nick.pseasons");
             }
